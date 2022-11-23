@@ -40,7 +40,7 @@ export default function App() {
   const [currentAccount, setCurrentAccount] = useState("");
     const [allCoins, setAllCoins] = useState([]);
 
-  const contractAddress = "0x79C18b180AF5dCE35A0421477220bf2546c672F5";
+  const contractAddress = "0x720eBb5027eCbE42bb90d9cBa4138C98cad4BA06";
   const contractABI = abi.abi;
 
   const getAllCoins = async () => {
