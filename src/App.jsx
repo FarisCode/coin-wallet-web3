@@ -40,7 +40,7 @@ export default function App() {
   const [currentAccount, setCurrentAccount] = useState("");
     const [allCoins, setAllCoins] = useState([]);
 
-  const contractAddress = "0x720eBb5027eCbE42bb90d9cBa4138C98cad4BA06";
+  const contractAddress = "0x31E297C2647F4b2555BA43445A6300b6C7441aFa";
   const contractABI = abi.abi;
 
   const getAllCoins = async () => {
@@ -143,8 +143,11 @@ export default function App() {
     if (account !== null) {
       setCurrentAccount(account);
     }
-    checkIfWalletIsConnected();
   }, []);
+
+  useEffect(()=>{
+      getAllCoins()
+  },[currentAccount])
   
   return (
     <div className="mainContainer">
@@ -166,7 +169,7 @@ export default function App() {
             Connect Wallet
           </button>
         )}
-        {allCoins.map((coin, index) => {
+        {allCoins.sort((x,y)=> y.timestamp - x.timestamp).map((coin, index) => {
           return (
             <div key={index} style={{ backgroundColor: "OldLace", marginTop: "16px", padding: "8px" }}>
               <div>Address: {coin.address}</div>
